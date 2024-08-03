@@ -1,6 +1,6 @@
 # brier_scores_project
 
-Takes data w/ columns of question, name, confidence, prediction_date, active, result and calculates indiivdual Brier Scores
+Takes data w/ columns of question, name, confidence, prediction_date, active, result and calculates individual Brier Scores
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
