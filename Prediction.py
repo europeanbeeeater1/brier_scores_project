@@ -1,6 +1,7 @@
 import datetime
 from BrierUtilityFunctions import BrierHelperFunctions as BrierHelpers
 import pandas as pd
+import numpy as np
 
 class Prediction:
     def __init__(self, question, name, confidence, prediction_date, active, result):
@@ -82,15 +83,17 @@ class BrierScore:
         else:
             raise TypeError(f"{prediction} is not an instance of Prediction class")
 
-    def active_status_updater(self, question, active):
-        if active == False:
-            result = int(input("Type 1 if the answer was 'Yes' and 0 if the answer was 'No'"))
-            if not (result == 1 or result == 0):
-                raise ValueError(f"{result} is an invalid input")
-            for prediction in self.predictions:
-                if prediction.question == question:
-                    prediction.active = False
-                    prediction.result = result 
+    def active_status_updater(self, question):
+        if not any(p.question == question for p in self.predictions):
+            raise ValueError(f"{question} is not a question used.")  
+        result = int(input("Type 1 if the answer was 'Yes' and 0 if the answer was 'No': ")) 
+        if result not in [0, 1]:
+            raise ValueError(f"{result} is an invalid input")
+        for prediction in self.predictions:
+            if prediction.question == question:
+                prediction.active = False
+                prediction.result = result
+        print("Status updated successfully")
             
     def question_deleter(self, question):
         self.predictions = [p for p in self.predictions if p.question != question]
@@ -101,6 +104,11 @@ class BrierScore:
     def unique_names(self):
         return list({p.name for p in self.predictions}) # Create a set and change it to a list
 
+    def unique_and_active_questions(self):
+        unique_and_active = list({p.question for p in self.predictions if p.active == True})
+        for i in unique_and_active:
+            print(i)
+        
     def find_score_by_name(self, name):
         if name not in self.unique_names():
             raise ValueError("f{name} is not found")
@@ -115,7 +123,7 @@ class BrierScore:
         if counter == 0:
             return None # 0 predictions found
         brier_score = (1/counter) * sum_squares_total
-        print("The user ", name, " has a score of ", brier_score)
+        return brier_score
     
     def find_each_score(self):
         unique_names = self.unique_names()
@@ -131,5 +139,3 @@ class BrierScore:
     def clear_all(self):
         self.predictions.clear()
 
-
-    
