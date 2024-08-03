@@ -68,7 +68,14 @@ class BrierHelperFunctions():
                         brier_score.add_prediction(prediction)
                 else:
                     invalidRowCounter += 1
-            print(brier_score)
             print("This file had", invalidRowCounter, "rows with issues")
+    
+    @staticmethod
+    def question_updater(brier_score):
+        changing_question = input("Input the question to change: ")
+        # Check if the question exists in any of the predictions
+        if not any(p.question == changing_question for p in brier_score.predictions):
+            raise ValueError(f"{changing_question} is an invalid input")
+        brier_score.active_status_updater(changing_question)
     
    
