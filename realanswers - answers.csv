@@ -1,0 +1,4 @@
+Question,Name,Confidence,Prediction_Date,Active,Result
+"Will there be a ceasefire (or formal ending of conflict) between Israel and Hamas in their current conflict (that began after the Hamas attacks on October 7th, 023) that lasts for more than 6 weeks December 15th, 2024? Note: if the ceasefire goes into effect AFTER December 16th, the result will be ""No""",Sarah K,0.11,2024/7/28,FALSE,0
+"Will China invade Taiwan by November 1st, 2024?",Sarah K,0.41,2024/7/28,TRUE,
+"Will there be a ceasefire (or formal ending of conflict) between Israel and Hamas in their current conflict (that began after the Hamas attacks on October 7th, 023) that lasts for more than 6 weeks December 15th, 2024? Note: if the ceasefire goes into effect AFTER December 16th, the result will be ""No""",John S,0.1,2024/7/28,FALSE,0
