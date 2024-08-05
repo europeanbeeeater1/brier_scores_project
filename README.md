@@ -1,6 +1,8 @@
 # brier_scores_project
 
 Takes data w/ columns of question, name, confidence, prediction_date, active, result and calculates individual Brier Scores
+
+Organizes 3 classes: BrierHelperFunctions, Prediction, BrierScores. BrierHelperFunctions provides utility functions like reading in file. BrierScores encapsulates Prediction objects into a list, modifies active status of predictions, returns scores.
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
